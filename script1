@@ -1,0 +1,22 @@
+#!/bin/bash
+#Florian Adrien
+echo "Souhaitez-vous démarrer le script ? Réponse attendu : Y/N"
+read var1
+
+if [ $var1 == "Y" ];
+	then
+		echo "Veuillez choisir le script à executer"
+		tab=("script2")
+		read var2
+			case $var2 in
+			"script2") ./script2;;
+			*) echo "entrée invalide";;
+			esac
+		
+elif [ $var1 == "N" ];
+	then
+		echo "Annulation"
+else
+		echo "Entrée invalide"
+fi
+

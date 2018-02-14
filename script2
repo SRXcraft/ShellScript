@@ -1,0 +1,19 @@
+#!/bin/bash
+#Florian / Adrien
+echo "Installation d'Atom, veuillez patientez..."
+apt-get update
+apt-get install gdebi
+wget https://github.com/atom/atom/releases/download/v1.24.0/atom-amd64.deb
+echo "Lancer l'installation ?"
+read $rep
+
+if ["$rep" == "Y"];
+	then 
+		gdebi /atom-amd64.deb
+elif ["$rep" == "N"];
+	then 
+		echo "Annulation ..."
+else 
+	echo "Argument incorrect"
+fi
+
