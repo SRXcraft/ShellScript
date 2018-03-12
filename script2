@@ -5,7 +5,7 @@ apt-get update
 apt-get install gdebi
 
 #boucle
-while [ "$rep1" != "Y" ];
+while [ "$rep1" != "Y" ] && [ "$rep1" != "N" ];
 	do
 		echo "installer le paquet logiciel ?"
 		read rep1
