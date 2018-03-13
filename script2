@@ -1,8 +1,16 @@
 #!/bin/bash
 #Florian / Adrien
+
+#vérification des droits d'administrateur
+if [ "$USER" != "root" ]
+	then
+		echo "Cette opération nécessite les droits d'administrateur."
+else
+
+#début du script
 echo "Installation d'Atom, veuillez patientez..."
-apt-get update
-apt-get install gdebi
+apt-get -qq update
+apt-get -qq install gdebi
 
 #boucle
 while [ "$rep1" != "Y" ] && [ "$rep1" != "N" ];
@@ -14,14 +22,16 @@ done
 
 if [ "$rep1" == "Y" ];
 	then
-		wget -q / -P / https://github.com/atom/atom/releases/download/v1.24.0/atom-amd64.deb
-
-		echo "Lancer l'installation ?"
-		read rep2
+		wget --show-progress -q -P /home/$USERNAME/Téléchargements https://github.com/atom/atom/releases/download/v1.24.0/atom-amd64.deb
+		while [ "$rep2" != "Y" ] && [ "$rep2" != "N" ];
+			do
+				echo "Lancer l'installation ?"
+				read rep2
+			done
 
 			if [ "$rep2" == "Y" ];
 				then
-					gdebi /atom-amd64.deb
+					gdebi /home/$USERNAME/Téléchargements/atom-amd64.deb
 			elif [ "$rep2" == "N" ];
 				then
 					echo "Annulation ..."
@@ -31,8 +41,11 @@ if [ "$rep1" == "Y" ];
 
 elif [ "$rep1" == "N" ]
 	then
-		echo "Lancer l'installation ?"
-		read rep2
+		while [ "$rep2" != "Y" ] && [ "$rep2" != "N" ];
+			do
+				echo "Lancer l'installation ?"
+				read rep2
+			done
 
 			if [ "$rep2" == "Y" ];
 				then
@@ -45,4 +58,6 @@ elif [ "$rep1" == "N" ]
 			fi
 else
 	echo "erreur"
+fi
+
 fi
