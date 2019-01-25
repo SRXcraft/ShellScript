@@ -1,7 +1,11 @@
 #!/bin/bash
 #Florian Adrien
-echo "Souhaitez-vous démarrer le script ? Réponse attendu : Y/N"
-read var1
+
+while [ "$var1" != "Y" ] && [ "$var1" != "N" ];
+	do
+			echo "Souhaitez-vous démarrer le script ? Réponse attendu : Y/N"
+			read var1
+done
 
 if [ $var1 == "Y" ];
 	then
@@ -12,11 +16,10 @@ if [ $var1 == "Y" ];
 			"script2") ./script2;;
 			*) echo "entrée invalide";;
 			esac
-		
+
 elif [ $var1 == "N" ];
 	then
 		echo "Annulation"
 else
 		echo "Entrée invalide"
 fi
-
